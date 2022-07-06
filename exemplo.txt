@@ -2,11 +2,14 @@ Objetivo:
 
 Criar uma API RESTFull para controle de produtos.
 
-Modelo: OK
+Modelo de produto: OK
 	Produto: id, nome, quantidade, valor, observacao.
 	
 Repositorio de produto: OK
 	getAll(), getById(), add(), update(), delete().
 	
-Serviço de produto:
+Serviço de produto: OK
 	getAll, getById, add, update, delete.
+	
+Controller de produto: OK
+	getAll, getById, add, update, delete.	

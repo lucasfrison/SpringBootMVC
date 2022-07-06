@@ -1,11 +1,13 @@
 package com.teste.exemplo.services;
 
+import java.util.InputMismatchException;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import com.teste.exemplo.model.Product;
+import com.teste.exemplo.repository.ProductRepository;
 
 @Service
 public class ProductService {
@@ -13,7 +15,52 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productRepository; 
 
+	/**
+	 * Método para retornar uma lista de produtos.
+	 * @return Lista de produtos.
+	 */
 	public List<Product> getAll() {
-		return ProductRepository;
+		//regra de negócio aqui caso exista
+		return productRepository.getAll();
+	}
+	
+	/**
+	 * Método que retorna o produto encontrado pelo id.
+	 * @param id do produto que será localizado.
+	 * @return Retorna um produto ou null caso o id não possua registro.
+	 */
+	public Optional<Product> getById(Integer id) {
+		return productRepository.getById(id);
+	}
+	
+	/**
+	 * Método para adicionar um produto na lista.
+	 * @param product produto que será adicionado a lista.
+	 * @return retorna o produto que foi adicionado na lista.
+	 */
+	public Product add(Product product) {
+		//regras de negocio se tiver
+		return productRepository.add(product);
+	}
+	
+	/**
+	 * Método para deletar o produto da lista com base no id.
+	 * @param id do produto a ser deletado.
+	 */
+	public void delete(Integer id) {
+		//regras de negocio aqui
+		productRepository.delete(id);
+	}
+	
+	/**
+	 * Método para atualizar o produto na lista
+	 * @param id do produto que será atualizado
+	 * @param product produto que será atualizado
+	 * @return retorna o produto após atualizar na lista.
+	 */
+	public Product update(Integer id, Product product) {
+		//passando id do produto a ser atualizado
+		product.setId(id);
+		return productRepository.update(product);
 	}
 }
