@@ -2,6 +2,7 @@ package com.teste.exemplo.model;
 
 public class Product {
 	
+	//#region Atributos
 	private Integer id;
 	
 	private String name;
@@ -11,9 +12,14 @@ public class Product {
 	private Double price;
 	
 	private String obs;
+	//#endregion
 
 	public Integer getId() {
 		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -47,11 +53,5 @@ public class Product {
 	public void setObs(String obs) {
 		this.obs = obs;
 	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-
 
 }
