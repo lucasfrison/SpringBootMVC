@@ -1,4 +1,4 @@
-package com.teste.exemplo.controller;
+package com.teste.exemplo.view.controller;
 
 //#region imports
 import java.util.List;

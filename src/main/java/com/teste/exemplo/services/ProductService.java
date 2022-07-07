@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.teste.exemplo.model.Product;
 import com.teste.exemplo.repository.ProductRepository;
+import com.teste.exemplo.shared.ProductDTO;
+
 
 @Service
 public class ProductService {
@@ -18,7 +20,7 @@ public class ProductService {
 	 * Método para retornar uma lista de produtos.
 	 * @return Lista de produtos.
 	 */
-	public List<Product> getAll() {
+	public List<ProductDTO> getAll() {
 		//regra de negócio aqui caso exista
 		return productRepository.getAll();
 	}
@@ -28,7 +30,7 @@ public class ProductService {
 	 * @param id do produto que será localizado.
 	 * @return Retorna um produto ou null caso o id não possua registro.
 	 */
-	public Optional<Product> getById(Integer id) {
+	public Optional<ProductDTO> getById(Integer id) {
 		return productRepository.getById(id);
 	}
 	
@@ -37,7 +39,7 @@ public class ProductService {
 	 * @param product produto que será adicionado a lista.
 	 * @return retorna o produto que foi adicionado na lista.
 	 */
-	public Product add(Product product) {
+	public Product add(ProductDTO product) {
 		//regras de negocio se tiver
 		return productRepository.add(product);
 	}
@@ -57,7 +59,7 @@ public class ProductService {
 	 * @param product produto que será atualizado
 	 * @return retorna o produto após atualizar na lista.
 	 */
-	public Product update(Integer id, Product product) {
+	public ProductDTO update(Integer id, ProductDTO product) {
 		//passando id do produto a ser atualizado
 		product.setId(id);
 		return productRepository.update(product);

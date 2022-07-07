@@ -1,16 +1,7 @@
-package com.teste.exemplo.model;
+package com.teste.exemplo.view.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class Product {
-	
-	//#region Atributos
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+public class ProductResponse {
+    //#region Atributos
 	private Integer id;
 	
 	private String name;
@@ -63,3 +54,4 @@ public class Product {
 	}
 
 }
+

@@ -1,16 +1,8 @@
-package com.teste.exemplo.model;
+package com.teste.exemplo.shared;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class Product {
+public class ProductDTO {
 	
 	//#region Atributos
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	private String name;
