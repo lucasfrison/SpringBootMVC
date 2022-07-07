@@ -1,5 +1,6 @@
 package com.teste.exemplo.model;
 
+@Entity
 public class Product {
 	
 	//#region Atributos

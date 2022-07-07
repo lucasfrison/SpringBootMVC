@@ -1,11 +1,13 @@
 package com.teste.exemplo.repository;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.stereotype.Repository;
+
 import com.teste.exemplo.model.Product;
+import com.teste.exemplo.model.exception.ResourceNotFoundException;
 
 @Repository
 public class ProductRepository {
@@ -64,7 +66,7 @@ public class ProductRepository {
 		Optional<Product> productFound = getById(product.getId());
 		
 		if (productFound == null) {
-			throw new InputMismatchException("Produto não encontrado!");
+			throw new ResourceNotFoundException("Produto não encontrado!");
 		}
 		
 		//Remover o produto antigo da lista
