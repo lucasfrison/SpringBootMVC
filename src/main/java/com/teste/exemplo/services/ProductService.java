@@ -2,10 +2,13 @@ package com.teste.exemplo.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.teste.exemplo.model.Product;
+import com.teste.exemplo.model.exception.ResourceNotFoundException;
 import com.teste.exemplo.repository.ProductRepository;
 import com.teste.exemplo.shared.ProductDTO;
 
@@ -22,7 +25,11 @@ public class ProductService {
 	 */
 	public List<ProductDTO> getAll() {
 		//regra de negócio aqui caso exista
-		return productRepository.getAll();
+		List<Product> products = productRepository.findAll();
+		
+		return products.stream()
+		.map(product -> new ModelMapper().map(product, ProductDTO.class))
+		.collect(Collectors.toList());
 	}
 	
 	/**
@@ -31,7 +38,17 @@ public class ProductService {
 	 * @return Retorna um produto ou null caso o id não possua registro.
 	 */
 	public Optional<ProductDTO> getById(Integer id) {
-		return productRepository.getById(id);
+		//obtendo produto pelo id
+		Optional<Product> product = productRepository.findById(id);
+		
+		if (product == null) {
+			throw new ResourceNotFoundException("Produto com id " + id + "nao encontrado.");
+		}
+
+		//convertendo optional de produto em produto dto
+		ProductDTO dto = new ModelMapper().map(product.get(), ProductDTO.class);
+		//criando e retornando um optional de produto dto
+		return Optional.of(dto);
 	}
 	
 	/**
